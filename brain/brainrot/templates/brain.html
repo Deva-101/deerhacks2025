@@ -8,8 +8,9 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'css/brain.css' %}">
 </head>
+
 <body>
-    <!-- Chat Response Section -->
+    <!-- ==================== CHAT SECTION ==================== -->
     <div class="chat-section">
         <div class="response-container">
             <h1>Dream Analysis</h1>
@@ -19,9 +20,9 @@
         </div>
     </div>
 
-    <input type="hidden" id="brain-region" value="{{ region_display }}">
-    <!-- Brain Diagram Section -->
+    <!-- ==================== BRAIN DIAGRAM SECTION ==================== -->
     <div class="tdc-main">
+        <!-- ---------- Left Info Panel ---------- -->
         <div class="tdc-main-left">
             <div class="tdc-main-left-wrapper">
                 <div class="tdc-main-left-wrapper-info">
@@ -31,6 +32,8 @@
                 </div>
             </div>
         </div>
+
+        <!-- ---------- Right Brain Graphic ---------- -->
         <div class="tdc-main-right">
             <div class="tdc-main-right-filter"></div>
             <div class="tdc-main-right-demo">
@@ -58,23 +61,16 @@
         </div>
     </div>
 
-    </body>
-    </html> -->
+    <!-- ==================== HIDDEN INPUTS ==================== -->
+    <input type="hidden" id="brain-region" value="{{ region_display }}">
 
-
-     <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Chatbot</title>
-    </head>
-
-    </head>
-    </div>
-
+    <!-- ==================== SCRIPTS ==================== -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.13.1/underscore-min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{% static 'js/brain.js' %}"></script>
 </body>
 </html>
+
+
+
+

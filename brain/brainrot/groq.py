@@ -59,6 +59,12 @@ thought-provoking response that includes:
 5. A tone that is supportive, respectful, and acknowledges the user's 
    perspective. Present your interpretations as possibilities or insights 
    rather than absolute truths.
+   
+6. Do NOT use '**' (double asterisks). If you need to emphasize a word or phrase, 
+   wrap it in single asterisks, like *this*.
+   
+7. Avoid large headings or titles. Simply present your insights in paragraph form.
+
 
 While you can reference general neuroscience and dream theory, please avoid 
 excessive jargon or unproven claims. Keep your explanations digestible, 
@@ -72,7 +78,6 @@ Remember:
 - Avoid diagnostic language or strict judgments about the user’s mental health.
 - The user’s privacy, comfort, and well-being are paramount.
 """
-
 # ------------------------------------------------------------------------------
 # 4. Function to Query Groq's AI Model (Allows System Prompt Override)
 # ------------------------------------------------------------------------------
