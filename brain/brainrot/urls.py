@@ -1,6 +1,7 @@
 from django.urls import path
-from .views import home  # Import the view function
+from . import views  # Import views correctly
 
 urlpatterns = [
-    path('', home, name='home'),  # Homepage
+    path('', views.home, name='home'),
+    path('chat/', views.chat_with_groq, name='chat_with_groq'),
 ]
