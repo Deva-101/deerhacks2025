@@ -6,28 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brain Chat</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/brain.css' %}">
-    <style>
-        .chat-section {
-            padding: 20px;
-            margin-bottom: 40px;
-            border-bottom: 2px solid #ccc;
-        }
-        .response-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        h1 {
-            color: #2c3e50;
-        }
-        a {
-            color: #3498db;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/brain.css' %}">
 </head>
 <body>
     <!-- Chat Response Section -->
@@ -35,11 +14,12 @@
         <div class="response-container">
             <h1>Dream Analysis</h1>
             <p><strong>Your Dream:</strong> {{ query }}</p>
-            <p><strong>Dream Analysis:</strong> {{ reply }}</p>
+            <p><strong>Dream Analysis:</strong> {{ reply|safe }}</p>
             <a href="/">Ask another question</a>
         </div>
     </div>
 
+    <input type="hidden" id="brain-region" value="{{ region_display }}">
     <!-- Brain Diagram Section -->
     <div class="tdc-main">
         <div class="tdc-main-left">
@@ -55,7 +35,6 @@
             <div class="tdc-main-right-filter"></div>
             <div class="tdc-main-right-demo">
                 <div class="tdc-main-right-demo-brain">
-                    <!-- SVG elements remain the same -->
                     <div class="tdc-brain-part tdc-frontal-lobe">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 263.36 316.37"><defs><style>.cls-1{stroke-miterlimit:10;stroke-width:2px;}</style></defs><title>frontal-lobe</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_2-2" data-name="Layer 2"><path class="cls-1" d="M1.27,192.38c1.08-11.44,4.95-19.83,12.68-36.62A365.14,365.14,0,0,1,32.26,122c1.61-2.63,9.21-15.05,16.9-25.35,24.44-32.73,55.69-52,60.56-54.93,26.78-16.18,50.73-22.39,67.61-26.76,4.64-1.2,12.27-2.39,26.76-5.63,11.63-2.6,17.4-4.09,26.76-5.63,17.17-2.83,25.83-4.16,29.58,0,2.74,3,2.84,8.11-1.41,22.54-7.65,25.95-13.47,28.1-16.9,42.25-5.61,23.14,7.46,27.75,1.41,52.11-4.11,16.57-10.23,14.72-14.08,32.39-4.51,20.66,2.24,30.59-5.63,39.44-5.88,6.6-12.89,4.73-25.35,8.45-22.61,6.74-36.27,23.85-40.85,29.58-21.05,26.36-9.69,48-33.8,70.42-3.76,3.49-8.84,8.11-16.9,11.27-23.36,9.14-50.45-2.41-66.2-15.49-16.14-13.4-22-31.94-33.8-69C1.47,210.48.4,201.55,1.27,192.38Z"/></g></g></svg>
                     </div>
@@ -78,14 +57,11 @@
             </div>
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.13.1/underscore-min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
-    <script src="{% static 'js/brain.js' %}"></script>
+
     </body>
     </html> -->
-    
-    
+
+
      <!DOCTYPE html>
     <html lang="en">
     <head>

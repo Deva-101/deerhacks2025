@@ -1,3 +1,22 @@
+.chat-section {
+    padding: 20px;
+    margin-bottom: 40px;
+    border-bottom: 2px solid #ccc;
+}
+.response-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+h1 {
+    color: #2c3e50;
+}
+a {
+    color: #3498db;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
 body,
 html {
   margin: 0;
@@ -10,6 +29,7 @@ html {
     stroke-dashoffset: 0;
   }
 }
+
 .tdc-main {
   height: 100vh;
   width: 100%;
@@ -118,10 +138,6 @@ html {
   display: block;
 }
 
-.tdc-main-right-demo-brain:hover svg {
-  opacity: 0.5;
-}
-
 .tdc-main-right-demo-brain .tdc-brain-part {
   position: absolute;
   cursor: pointer;
@@ -129,10 +145,7 @@ html {
 
 .tdc-main-right-demo-brain .tdc-brain-part svg {
   width: 200px;
-  fill: white;
   stroke: black;
-  transform: scale(1);
-  transition: all 0.5s;
 }
 
 .tdc-main-right-demo-brain .tdc-brain-part svg path {
@@ -142,18 +155,13 @@ html {
   animation: dash 2s linear forwards;
 }
 
-.tdc-main-right-demo-brain .tdc-brain-part:hover svg, .tdc-main-right-demo-brain .tdc-brain-part.active svg {
-  transform: scale(1.5);
-  opacity: 1;
-  stroke: #fff;
-}
-
+/* Fixed positions and colors for each brain part */
 .tdc-main-right-demo-brain .tdc-frontal-lobe {
   top: 0;
   left: 0;
 }
 
-.tdc-main-right-demo-brain .tdc-frontal-lobe:hover svg, .tdc-main-right-demo-brain .tdc-frontal-lobe.active svg {
+.tdc-main-right-demo-brain .tdc-frontal-lobe svg {
   fill: #00bcd4;
 }
 
@@ -164,9 +172,6 @@ html {
 
 .tdc-main-right-demo-brain .tdc-cerebellum svg {
   width: 160px;
-}
-
-.tdc-main-right-demo-brain .tdc-cerebellum:hover svg, .tdc-main-right-demo-brain .tdc-cerebellum.active svg {
   fill: #00aa7f;
 }
 
@@ -177,9 +182,6 @@ html {
 
 .tdc-main-right-demo-brain .tdc-occipital-lobe svg {
   width: 140px;
-}
-
-.tdc-main-right-demo-brain .tdc-occipital-lobe:hover svg, .tdc-main-right-demo-brain .tdc-occipital-lobe.active svg {
   fill: #ffc446;
 }
 
@@ -188,7 +190,7 @@ html {
   left: 180px;
 }
 
-.tdc-main-right-demo-brain .tdc-parietal-lobe:hover svg, .tdc-main-right-demo-brain .tdc-parietal-lobe.active svg {
+.tdc-main-right-demo-brain .tdc-parietal-lobe svg {
   fill: #e497a4;
 }
 
@@ -199,9 +201,6 @@ html {
 
 .tdc-main-right-demo-brain .tdc-temporal-lobe svg {
   width: 220px;
-}
-
-.tdc-main-right-demo-brain .tdc-temporal-lobe:hover svg, .tdc-main-right-demo-brain .tdc-temporal-lobe.active svg {
   fill: #7e7acf;
 }
 
@@ -212,10 +211,18 @@ html {
 
 .tdc-main-right-demo-brain .tdc-brain-stem svg {
   width: 140px;
-}
-
-.tdc-main-right-demo-brain .tdc-brain-stem:hover svg, .tdc-main-right-demo-brain .tdc-brain-stem.active svg {
   fill: #b81434;
 }
 
-/*# sourceMappingURL=style.css.map */
+/* Add this to your CSS */
+.tdc-main-right-demo-brain .tdc-brain-part svg {
+  opacity: 0.3; /* Make all parts semi-transparent by default */
+  transition: opacity 0.3s;
+}
+
+.tdc-main-right-demo-brain .tdc-brain-part.active svg {
+  opacity: 1; /* Make active part fully visible */
+}
+
+/* Remove all hover-related styles from the CSS */
+
