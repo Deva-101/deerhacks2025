@@ -227,71 +227,73 @@ animation: dash 2s linear forwards;
 }
 
 /* Fixed positions and colors for each brain part */
+/* Fixed positions and colors for each brain part */
 .tdc-main-right-demo-brain .tdc-frontal-lobe {
-top: 0;
-left: 0;
+  top: 0;
+  left: -280px; /* Original: 20px + 150px */
 }
 
 .tdc-main-right-demo-brain .tdc-frontal-lobe svg {
-fill: #00bcd4;
+  fill: #00bcd4;
 }
 
 .tdc-main-right-demo-brain .tdc-cerebellum {
-top: 235px;
-left: 215px;
+  top: 235px;
+  left: -65px; /* Original: 235px + 150px */
 }
 
 .tdc-main-right-demo-brain .tdc-cerebellum svg {
-width: 160px;
-fill: #00aa7f;
+  width: 160px;
+  fill: #00aa7f;
 }
 
 .tdc-main-right-demo-brain .tdc-occipital-lobe {
-top: 100px;
-left: 280px;
+  top: 100px;
+  left: 0px; /* Original: 300px + 150px */
 }
 
 .tdc-main-right-demo-brain .tdc-occipital-lobe svg {
-width: 140px;
-fill: #ffc446;
+  width: 140px;
+  fill: #ffc446;
 }
 
 .tdc-main-right-demo-brain .tdc-parietal-lobe {
-top: 0;
-left: 180px;
+  top: 0;
+  left: -100px; /* Original: 200px + 150px */
 }
 
 .tdc-main-right-demo-brain .tdc-parietal-lobe svg {
-fill: #e497a4;
+  fill: #e497a4;
 }
 
 .tdc-main-right-demo-brain .tdc-temporal-lobe {
-top: 140px;
-left: 95px;
+  top: 140px;
+  left: -185px; /* Original: 115px + 150px */
 }
 
 .tdc-main-right-demo-brain .tdc-temporal-lobe svg {
-width: 220px;
-fill: #7e7acf;
+  width: 220px;
+  fill: #7e7acf;
 }
 
 .tdc-main-right-demo-brain .tdc-brain-stem {
-top: 280px;
-left: 180px;
+  top: 280px;
+  left: -100px; /* Original: 200px + 150px */
 }
 
 .tdc-main-right-demo-brain .tdc-brain-stem svg {
-width: 140px;
-fill: #b81434;
+  width: 140px;
+  fill: #b81434;
 }
 
+/* The rest remains unchanged */
 .tdc-main-right-demo-brain .tdc-brain-part svg {
-opacity: 0.3;
-transition: opacity 0.3s;
+  opacity: 0.3;
+  transition: opacity 0.3s;
 }
 
 .tdc-main-right-demo-brain .tdc-brain-part.active svg {
-opacity: 1;
+  opacity: 1;
 }
 /* ==================== CONVERSATION HISTORY SECTION ==================== */
 .history-section {
