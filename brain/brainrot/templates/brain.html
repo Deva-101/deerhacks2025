@@ -6,6 +6,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brain Chat</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <style>
+        /* Add the new background styles */
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --bg-color: #f8fafc;
+            --text-color: #1e293b;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(45deg, #2563eb 0%, #7c3aed 30%, #10b981 100%);
+            filter: blur(100px);
+            opacity: 0.15;
+            z-index: -1;
+            animation: gradientShift 20s ease infinite;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            width: 200vw;
+            height: 200vh;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 90% 70%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 30%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+            z-index: -1;
+            animation: float 40s linear infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(5deg) scale(1.2); }
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(-5%, -5%); }
+            50% { transform: translate(-10%, 0); }
+            75% { transform: translate(-5%, 5%); }
+            100% { transform: translate(0, 0); }
+        }
+    </style>
     <link rel="stylesheet" type="text/css" href="{% static 'css/brain.css' %}">
 </head>
 
