@@ -63,15 +63,31 @@
     <!-- Conversation History Section -->
     <div class="history-section">
         <h2>Conversation History</h2>
-        {% for entry in history %}
-        <div class="history-entry">
-            <p><strong>Query:</strong> {{ entry.user_query }}</p>
-            <p><strong>AI Response:</strong> {{ entry.ai_response|safe }}</p>
-            <p><strong>Brain Region:</strong> {{ entry.brain_region }}</p>
+        <div class="history-container">
+            {% for entry in history %}
+            <div class="history-card">
+                <h3 class="history-title">Conversation #{{ forloop.revcounter }}</h3>
+                <div class="history-header">
+                    <p><strong>Query:</strong></p>
+                </div>
+                <div class="history-content">
+                    <p>{{ entry.user_query }}</p>
+                </div>
+                <div class="history-header">
+                    <p><strong>AI Response:</strong></p>
+                </div>
+                <div class="history-content">
+                    <p>{{ entry.ai_response|safe }}</p>
+                </div>
+                <div class="history-footer">
+                    <p><strong>Brain Region:</strong> {{ entry.brain_region }}</p>
+                </div>
+            </div>
+            <div class="history-separator"></div> <!-- Separator between cards -->
+            {% empty %}
+            <p class="no-history">No past conversations found.</p>
+            {% endfor %}
         </div>
-        {% empty %}
-        <p>No past conversations found.</p>
-        {% endfor %}
     </div>
 
     <!-- ==================== HIDDEN INPUTS ==================== -->

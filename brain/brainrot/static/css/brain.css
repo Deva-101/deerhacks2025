@@ -298,3 +298,97 @@ a {
     justify-content: center;
 }
 }
+
+/* ==================== CONVERSATION HISTORY SECTION ==================== */
+.history-section {
+    width: 80%;
+    max-width: 800px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.history-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #2c3e50;
+    text-align: center;
+    border-bottom: 3px solid #3498db;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.history-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.history-card {
+    background: white;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+    padding: 20px;
+    transition: transform 0.2s ease-in-out;
+    border-left: 6px solid #3498db;
+    position: relative;
+}
+
+.history-card:hover {
+    transform: translateY(-5px);
+}
+
+.history-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.history-header {
+    font-size: 16px;
+    font-weight: bold;
+    color: #3498db;
+    padding-bottom: 5px;
+}
+
+.history-content {
+    background: #f8f9fa;
+    padding: 15px;
+    border-left: 4px solid #3498db;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+}
+
+.history-footer {
+    font-size: 14px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-top: 10px;
+    padding-top: 5px;
+    border-top: 1px solid #ddd;
+}
+
+/* ==================== SEPARATOR BETWEEN CARDS ==================== */
+.history-separator {
+    width: 100%;
+    max-width: 650px;
+    height: 2px;
+    background: #ddd;
+    margin: 15px 0;
+    border-radius: 2px;
+}
+
+/* No history message */
+.no-history {
+    font-size: 16px;
+    color: #555;
+    text-align: center;
+    margin-top: 20px;
+}
