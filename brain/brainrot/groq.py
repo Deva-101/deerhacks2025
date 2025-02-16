@@ -1,23 +1,3 @@
-#!/usr/bin/env python3
-"""
-
-A script that can analyze dreams using Groq's AI model by default,
-but also allows an override of the system prompt for other scenarios.
-
-Usage:
-1. Ensure you have installed the 'groq' Python client.
-2. Set your environment variable 'GROQ_API_KEY' to your Groq API key
-   (or edit the code to include it directly—although this is not 
-   recommended for production).
-3. Run the script: python analyze_dream.py
-4. Enter your dream text when prompted, or specify a different system prompt,
-   and receive a processed response from the AI.
-
-Important:
-- This script is for demonstration/hackathon purposes. 
-- Not intended for production without additional security & error handling.
-"""
-
 import os
 import groq
 
