@@ -60,6 +60,19 @@
             </div>
         </div>
     </div>
+    <!-- Conversation History Section -->
+    <div class="history-section">
+        <h2>Conversation History</h2>
+        {% for entry in history %}
+        <div class="history-entry">
+            <p><strong>Query:</strong> {{ entry.user_query }}</p>
+            <p><strong>AI Response:</strong> {{ entry.ai_response|safe }}</p>
+            <p><strong>Brain Region:</strong> {{ entry.brain_region }}</p>
+        </div>
+        {% empty %}
+        <p>No past conversations found.</p>
+        {% endfor %}
+    </div>
 
     <!-- ==================== HIDDEN INPUTS ==================== -->
     <input type="hidden" id="brain-region" value="{{ region_display }}">
