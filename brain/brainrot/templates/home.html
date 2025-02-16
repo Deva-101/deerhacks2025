@@ -15,13 +15,91 @@
         body {
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             margin: 0;
-            padding: 0;
+            padding: 0 5%;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             min-height: 100vh;
             background-color: var(--bg-color);
             color: var(--text-color);
+            position: relative;
+        }
+
+        .title-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+            left: 30px;
+        }
+
+        .title {
+            font-size: 3rem;  /* Keep original size for "Welcome to the" */
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            line-height: 1.3;
+            max-width: 600px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            left: 200px;  /* Reduced from 600px to move more to the left */
+        }
+
+        .title .analyzer-text {
+            font-size: 4.5rem;  /* Larger size only for "Dream Analyzer" */
+            display: block;
+        }
+
+
+        /* Rest of the styles remain the same */
+        body::before {
+            content: '';
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(45deg, #2563eb 0%, #7c3aed 30%, #10b981 100%);
+            filter: blur(100px);
+            opacity: 0.15;
+            z-index: -1;
+            animation: gradientShift 20s ease infinite;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            width: 200vw;
+            height: 200vh;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 90% 70%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 30%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+            z-index: -1;
+            animation: float 40s linear infinite;
+        }
+
+        .chat-container {
+            width: 500px;
+            height: 80vh;
+            margin-right: 5%;
+            transform: translateX(-20%);
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(5deg) scale(1.2); }
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(-5%, -5%); }
+            50% { transform: translate(-10%, 0); }
+            75% { transform: translate(-5%, 5%); }
+            100% { transform: translate(0, 0); }
         }
 
         .chat-container {
@@ -125,40 +203,61 @@
             }
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 1024px) {
+            body {
+                flex-direction: column;
+                padding: 2rem;
+                justify-content: flex-start;
+            }
+
+            .title-container {
+                min-height: auto;
+                padding: 2rem 0;
+                text-align: center;
+            }
+
+            .title {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+                left: 0;
+            }
+
+            .title .analyzer-text {
+                font-size: 3rem;
+            }
+
             .chat-container {
                 width: 100%;
-                height: 100vh;
-                border-radius: 0;
+                height: 70vh;
+                transform: none;
+                margin-left: 0;
             }
         }
     </style>
 </head>
 <body>
-
-<div class="chat-container">
-    <div class="chat-header">
-        Dream Analyzer
-    </div>
-
-    <div class="chat-messages">
-        <!-- Example messages -->
-        <div class="message ai-message">
-            Hello! What did you dream about last night?
+    <div class="title">Welcome to the<br><span class="analyzer-text">Dream Analyzer</span></div>
+    <div class="chat-container">
+        <div class="chat-header">
+            Dream Analyzer
         </div>
+
+        <div class="chat-messages">
+            <div class="message ai-message">
+                Hello! What did you dream about last night?
+            </div>
+        </div>
+
+        <form method="post" class="chat-input">
+            {% csrf_token %}
+            <input type="text" name="message" placeholder="Type your message..." required>
+            <button type="submit">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+            </button>
+        </form>
     </div>
-
-    <form method="post" class="chat-input">
-        {% csrf_token %}
-        <input type="text" name="message" placeholder="Type your message..." required>
-        <button type="submit">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="22" y1="2" x2="11" y2="13"></line>
-                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-            </svg>
-        </button>
-    </form>
-</div>
-
 </body>
 </html>
