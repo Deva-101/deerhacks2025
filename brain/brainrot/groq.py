@@ -1,12 +1,17 @@
 import os
 import requests
 import groq
+from PIL import Image
+from io import BytesIO
+
 
 # ----------------------------------------------------------------------
 # 1. Load API Keys
 # ----------------------------------------------------------------------
 api_key = "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"
 hf_api_key = "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"
+IMAGE_SAVE_DIR = "generated_images"
+
 
 if not api_key:
     raise ValueError("API key not found. Set the GROQ_API_KEY environment variable.")
@@ -15,7 +20,7 @@ if not hf_api_key:
     raise ValueError("Hugging Face API key not found. Set the HF_API_KEY variable.")
 
 # Hugging Face API URL for Stable Diffusion v1.5
-HF_API_URL = "https://api-inference.huggingface.co/models/runwayml/stable-diffusion-v1-5"
+HF_API_URL = "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-3.5-large"
 HEADERS = {"Authorization": f"Bearer {hf_api_key}"}
 
 # Ensure the image output directory exists
@@ -129,24 +134,32 @@ def dream_analysis_to_image_prompt(dream_analysis: str) -> str:
 # ----------------------------------------------------------------------
 # 6. Generate Image Using Hugging Face Stable Diffusion
 # ----------------------------------------------------------------------
-def generate_image(image_prompt: str) -> str:
+
+def generate_image(image_prompt: str, resize_width: int = 512, resize_height: int = 512) -> str:
     """
-    Generates an image using Hugging Face's Stable Diffusion v1.5 API.
-    Saves the image in the 'static/generated_images' directory and returns the file path.
+    Generates an image using Hugging Face's Stable Diffusion 3.5 API and resizes it to the given dimensions.
+    Saves the image in the 'generated_images' directory and returns the file path.
     """
     data = {"inputs": image_prompt}
 
     print(f"🔄 Generating image for prompt: {image_prompt}...")
     response = requests.post(HF_API_URL, headers=HEADERS, json=data)
 
-    num_images = len(os.listdir("generated_images"))
+    num_images = len(os.listdir(IMAGE_SAVE_DIR))
 
     if response.status_code == 200:
+        # Open image using PIL
+        image = Image.open(BytesIO(response.content))
+
+        # Resize image
+        image = image.resize((resize_width, resize_height), Image.Resampling.LANCZOS)
+
+        # Save image
         image_path = os.path.join(IMAGE_SAVE_DIR, f"generated_image_{num_images}.png")
-        with open(image_path, "wb") as file:
-            file.write(response.content)
-        print(f"✅ Image saved as {image_path}")
-        return f"generated_images/generated_image_{num_images}.png"  # Path formatted for Django static usage
+        image.save(image_path)
+
+        print(f"✅ Image saved as {image_path} (Resized to {resize_width}x{resize_height})")
+        return f"generated_images/generated_image_{num_images}.png"
     else:
         print(f"❌ Error: {response.status_code}, {response.text}")
-        return None  # Return None if there was an error
+        return None
