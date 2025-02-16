@@ -139,12 +139,14 @@ def generate_image(image_prompt: str) -> str:
     print(f"🔄 Generating image for prompt: {image_prompt}...")
     response = requests.post(HF_API_URL, headers=HEADERS, json=data)
 
+    num_images = len(os.listdir("generated_images"))
+
     if response.status_code == 200:
-        image_path = os.path.join(IMAGE_SAVE_DIR, "generated_image.png")
+        image_path = os.path.join(IMAGE_SAVE_DIR, f"generated_image_{num_images}.png")
         with open(image_path, "wb") as file:
             file.write(response.content)
         print(f"✅ Image saved as {image_path}")
-        return "generated_images/generated_image.png"  # Path formatted for Django static usage
+        return f"generated_images/generated_image_{num_images}.png"  # Path formatted for Django static usage
     else:
         print(f"❌ Error: {response.status_code}, {response.text}")
         return None  # Return None if there was an error

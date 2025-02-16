@@ -31,7 +31,7 @@ def home(request):
             image_url = generate_image(image_prompt) if image_prompt else None
 
             # 6) Store data in Firebase
-            save_request_to_firebase(user_message, formatted_response, extracted_region)
+            save_request_to_firebase(user_message, formatted_response, extracted_region, image_url)
 
             # 7) Store session data for rendering on the next page
             request.session["user_message"] = user_message
@@ -72,7 +72,7 @@ def brain(request):
     })
 
 
-def save_request_to_firebase(user_message, bot_response, region_id):
+def save_request_to_firebase(user_message, bot_response, region_id, image_url):
     """
     Saves the request details to Firebase Realtime Database with an ordered index.
     """
@@ -90,7 +90,8 @@ def save_request_to_firebase(user_message, bot_response, region_id):
     new_request = {
         "user_query": user_message,
         "ai_response": bot_response,
-        "brain_region": region_id
+        "brain_region": region_id,
+        "image_url": image_url
     }
 
     requests_ref.child(str(next_index)).set(new_request)
@@ -105,10 +106,10 @@ def get_conversation_history():
     history = requests_ref.get()
 
     if isinstance(history, dict):
-        return [{"id": int(k), "user_query": v["user_query"], "ai_response": v["ai_response"], "brain_region": v["brain_region"]}
+        return [{"id": int(k), "user_query": v["user_query"], "ai_response": v["ai_response"], "brain_region": v["brain_region"], "image_url": v["image_url"]}
                 for k, v in sorted(history.items(), key=lambda x: int(x[0]))]
     elif isinstance(history, list):
-        return [{"id": i + 1, "user_query": entry.get("user_query", ""), "ai_response": entry.get("ai_response", ""), "brain_region": entry.get("brain_region", "")}
+        return [{"id": i + 1, "user_query": entry.get("user_query", ""), "ai_response": entry.get("ai_response", ""), "brain_region": entry.get("brain_region", ""), "image_url": entry.get("image_url", "")}
                 for i, entry in enumerate(history) if isinstance(entry, dict)]
     else:
         return []

@@ -38,7 +38,7 @@
             position: fixed;
             width: 200vw;
             height: 200vh;
-            background: 
+            background:
                 radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 90% 70%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 50% 30%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
@@ -142,6 +142,9 @@
             </div>
             <div class="history-content">
                 <p>{{ entry.ai_response|safe }}</p>
+            </div>
+            <div>
+                <img src="{% static entry.image_url %}" alt="Generated Dream Image" class="dream-image">
             </div>
             <div class="history-footer">
                 <p><strong>Brain Region:</strong> {{ entry.brain_region }}</p>
