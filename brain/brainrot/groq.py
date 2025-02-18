@@ -8,8 +8,8 @@ from io import BytesIO
 # ----------------------------------------------------------------------
 # 1. Load API Keys
 # ----------------------------------------------------------------------
-api_key = "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"
-hf_api_key = "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"
+api_key = "" # api key goes here
+hf_api_key = "" # api key goes here
 IMAGE_SAVE_DIR = "generated_images"
 
 
